@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmLink - Smart Market Linkage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- LOGIN PAGE -->
+    <section id="loginPage" class="page active">
+
+        <div class="login-container">
+
+            <div class="logo">🌾</div>
+
+            <h1>FarmLink</h1>
+
+            <p class="tagline">
+                Smart Market Linkage & Price Discovery
+            </p>
+
+            <div class="login-card">
+
+                <h2>Farmer Login</h2>
+
+                <label>Farmer Name</label>
+                <input
+                    type="text"
+                    id="farmerName"
+                    placeholder="Enter your name"
+                >
+
+                <label>Your Location</label>
+                <input
+                    type="text"
+                    id="farmerLocation"
+                    placeholder="Enter village / town"
+                >
+
+                <button onclick="login()">
+                    Continue →
+                </button>
+
+            </div>
+
+            <p class="demo-text">
+                Prototype Demo
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CROP SELECTION PAGE -->
+    <section id="cropPage" class="page">
+
+        <header class="top-header">
+
+            <div>
+                <h2>🌾 FarmLink</h2>
+                <span id="welcomeText"></span>
+            </div>
+
+            <button class="logout-btn" onclick="logout()">
+                Logout
+            </button>
+
+        </header>
+
+
+        <div class="crop-container">
+
+            <div class="location-box">
+                📍 Location:
+                <strong id="locationDisplay"></strong>
+            </div>
+
+            <h1>What crop do you want to sell?</h1>
+
+            <p>
+                Select your crop to discover the best nearby selling opportunities.
+            </p>
+
+            <input
+                type="text"
+                id="cropSearch"
+                class="search-box"
+                placeholder="🔍 Search crop..."
+                onkeyup="filterCrops()"
+            >
+
+            <div id="cropGrid" class="crop-grid"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULTS PAGE -->
+    <section id="resultsPage" class="page">
+
+        <header class="top-header">
+
+            <div>
+                <h2>🌾 FarmLink</h2>
+                <span id="resultLocation"></span>
+            </div>
+
+            <button class="back-btn" onclick="showCropPage()">
+                ← Change Crop
+            </button>
+
+        </header>
+
+
+        <div class="results-container">
+
+            <div class="result-title">
+
+                <div>
+                    <p>Market opportunities for</p>
+
+                    <h1 id="selectedCrop"></h1>
+                </div>
+
+                <div class="radius">
+                    📍 Within 30 KM
+                </div>
+
+            </div>
+
+
+            <!-- SUMMARY CARDS -->
+
+            <div class="summary-grid">
+
+                <div class="summary-card best-price">
+                    <div class="summary-icon">🥇</div>
+
+                    <h3>Best Price</h3>
+
+                    <p id="bestPriceName"></p>
+
+                    <strong id="bestPriceValue"></strong>
+                </div>
+
+
+                <div class="summary-card nearby">
+                    <div class="summary-icon">📍</div>
+
+                    <h3>Best Nearby</h3>
+
+                    <p id="nearbyName"></p>
+
+                    <strong id="nearbyValue"></strong>
+                </div>
+
+
+                <div class="summary-card net-return">
+                    <div class="summary-icon">💰</div>
+
+                    <h3>Best Net Return</h3>
+
+                    <p id="netName"></p>
+
+                    <strong id="netValue"></strong>
+                </div>
+
+            </div>
+
+
+            <!-- PRICE EXPLANATION -->
+
+            <div class="info-box">
+
+                <h3>💡 How our recommendation works</h3>
+
+                <p>
+                    We compare the crop price, distance and estimated
+                    transportation cost to calculate the farmer's
+                    expected net return.
+                </p>
+
+                <div class="formula">
+                    Net Return =
+                    Selling Price − Estimated Transportation Cost
+                </div>
+
+            </div>
+
+
+            <h2 class="section-title">
+                Nearby Markets & Buyers
+            </h2>
+
+            <p class="demo-warning">
+                ⚠️ Demo prices shown below are sample data for prototype demonstration.
+            </p>
+
+
+            <div id="marketList"></div>
+
+
+            <div class="data-source">
+
+                <h3>🏛️ Price Data Strategy</h3>
+
+                <p>
+                    Production version can integrate permitted official
+                    agricultural market data from sources such as
+                    AGMARKNET and e-NAM, along with verified buyer offers.
+                </p>
+
+                <p>
+                    🕐 Every price will contain a last-updated timestamp.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
