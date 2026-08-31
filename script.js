@@ -629,11 +629,48 @@ function displayMarkets(markets) {
 
 function selectMarket(name) {
 
-    alert(
-        "You selected: " +
-        name +
-        "\n\nIn the full version, this button can connect the farmer with the buyer/market."
+    const markets = generateMarketData(selectedCrop);
+
+    const market = markets.find(
+        m => m.name === name
     );
+
+    if (!market) {
+        return;
+    }
+
+    market.net =
+        market.price - market.transport;
+
+
+    document.getElementById("modalBuyerName")
+        .innerText = market.name;
+
+    document.getElementById("modalCrop")
+        .innerText = selectedCrop;
+
+    document.getElementById("modalDistance")
+        .innerText = market.distance + " km";
+
+    document.getElementById("modalPrice")
+        .innerText =
+        "₹" + market.price + " / quintal";
+
+    document.getElementById("modalTransport")
+        .innerText =
+        "₹" + market.transport;
+
+    document.getElementById("modalNet")
+        .innerText =
+        "₹" + market.net + " / quintal";
+
+    document.getElementById("modalUpdated")
+        .innerText =
+        "Updated " + market.updated;
+
+
+    document.getElementById("buyerModal")
+        .classList.add("show");
 
 }
 
@@ -650,3 +687,64 @@ function showCropPage() {
 /* ---------- INITIALIZE ---------- */
 
 displayCrops();
+function showConnectionSuccess() {
+
+    const buyerName =
+        document.getElementById("modalBuyerName").innerText;
+
+    const modal = document.getElementById("buyerModal");
+
+    modal.innerHTML = `
+        <div class="modal-content">
+
+            <button class="close-modal"
+                onclick="document.getElementById('buyerModal').classList.remove('show')">
+                ×
+            </button>
+
+            <div class="modal-icon">
+                ✅
+            </div>
+
+            <h2>Connection Successful!</h2>
+
+            <p class="modal-subtitle">
+                Your selling opportunity has been selected.
+            </p>
+
+            <div class="buyer-details">
+
+                <h3>🤝 Buyer Selected</h3>
+
+                <div class="modal-row">
+                    <span>Buyer / Market</span>
+                    <strong>${buyerName}</strong>
+                </div>
+
+                <div class="modal-row">
+                    <span>Status</span>
+                    <strong style="color:#2e7d32;">
+                        Connection Request Sent
+                    </strong>
+                </div>
+
+                <div class="modal-row">
+                    <span>Next Step</span>
+                    <strong>
+                        Buyer will contact the farmer
+                    </strong>
+                </div>
+
+            </div>
+
+            <button
+                class="connect-btn"
+                onclick="document.getElementById('buyerModal').classList.remove('show')">
+                ✓ Done
+            </button>
+
+        </div>
+    `;
+
+    modal.classList.add("show");
+}
