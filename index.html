@@ -225,7 +225,71 @@
 
     </section>
 
+    <!-- BUYER CONNECTION MODAL -->
 
+<div id="buyerModal" class="modal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" onclick="closeBuyerModal()">
+            ×
+        </button>
+
+        <div class="modal-icon">
+            🤝
+        </div>
+
+        <h2>Selected Selling Opportunity</h2>
+
+        <p class="modal-subtitle">
+            Review the opportunity before connecting.
+        </p>
+
+        <div class="buyer-details">
+
+            <h3 id="modalBuyerName"></h3>
+
+            <div class="modal-row">
+                <span>🌾 Crop</span>
+                <strong id="modalCrop"></strong>
+            </div>
+
+            <div class="modal-row">
+                <span>📍 Distance</span>
+                <strong id="modalDistance"></strong>
+            </div>
+
+            <div class="modal-row">
+                <span>💰 Offered Price</span>
+                <strong id="modalPrice"></strong>
+            </div>
+
+            <div class="modal-row">
+                <span>🚚 Transport</span>
+                <strong id="modalTransport"></strong>
+            </div>
+
+            <div class="modal-row net-row">
+                <span>💵 Estimated Net Return</span>
+                <strong id="modalNet"></strong>
+            </div>
+
+            <div class="modal-update">
+                🕐 <span id="modalUpdated"></span>
+            </div>
+
+        </div>
+
+        <button
+    class="connect-btn"
+    onclick="showConnectionSuccess()"
+>
+    🤝 Connect with Buyer
+</button>
+
+    </div>
+
+</div>
     <script src="script.js"></script>
 
 </body>
